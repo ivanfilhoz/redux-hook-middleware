@@ -4,7 +4,7 @@ import {
   createReducer,
   getDefaultMiddleware
 } from 'redux-starter-kit'
-import { hookMiddleware } from './hook'
+import { hook, hooksMiddleware } from './hook'
 import { getUser } from './mock'
 
 // Action creators
@@ -20,10 +20,11 @@ const fetchUser = dispatch => {
   })
 }
 
-export const clickButton = {
-  ...click(),
-  hooks: [fetchUser] // That's where the magic happens :)
-}
+export const clickButton = hook(click(), fetchUser) // ❤️
+
+Object.defineProperty(clickButton, 'hooks', {
+  value: [fetchUser]
+})
 
 // Reducer
 const initialState = {
@@ -48,5 +49,5 @@ const reducer = createReducer(initialState, {
 // Store
 export const store = configureStore({
   reducer,
-  middleware: [...getDefaultMiddleware(), hookMiddleware]
+  middleware: [...getDefaultMiddleware(), hooksMiddleware] // ❤️
 })
