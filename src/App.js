@@ -20,7 +20,7 @@ export const App = connect(
     <>
       <button onClick={clickButton}>Fetch user</button>
       <hr />
-      <pre>{JSON.stringify({ clicked, loading, user })}</pre>
+      <pre>{JSON.stringify({ clicked, loading, user }, null, 2)}</pre>
     </>
   )
 })
