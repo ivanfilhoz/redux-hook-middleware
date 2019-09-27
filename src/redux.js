@@ -4,8 +4,8 @@ import {
   createReducer,
   getDefaultMiddleware
 } from 'redux-starter-kit'
-import { getUser } from './api'
 import { hookMiddleware } from './hook'
+import { getUser } from './mock'
 
 // Action creators
 const click = createAction('click')
