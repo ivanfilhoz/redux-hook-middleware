@@ -22,10 +22,6 @@ const fetchUser = dispatch => {
 
 export const clickButton = hook(click(), fetchUser) // ❤️
 
-Object.defineProperty(clickButton, 'hooks', {
-  value: [fetchUser]
-})
-
 // Reducer
 const initialState = {
   clicked: 0,
