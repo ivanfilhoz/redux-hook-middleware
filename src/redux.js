@@ -7,11 +7,13 @@ import {
 import { getUser } from './api'
 import { hookMiddleware } from './hook'
 
+// Action creators
 const click = createAction('click')
 const userLoading = createAction('user/loading')
 const userSuccess = createAction('user/success')
 
-export const fetchUser = dispatch => {
+// Actions
+const fetchUser = dispatch => {
   dispatch(userLoading())
   return getUser().then(user => {
     dispatch(userSuccess(user))
@@ -23,6 +25,7 @@ export const clickButton = {
   hooks: [fetchUser]
 }
 
+// Reducer
 const initialState = {
   clicked: 0,
   user: null,
@@ -42,6 +45,7 @@ const reducer = createReducer(initialState, {
   }
 })
 
+// Store
 export const store = configureStore({
   reducer,
   middleware: [...getDefaultMiddleware(), hookMiddleware]
