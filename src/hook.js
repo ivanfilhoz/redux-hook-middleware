@@ -1,9 +1,11 @@
 export const hooksMiddleware = ({ dispatch }) => next => action => {
   if (action && Array.isArray(action.hooks)) {
-    action.hooks.forEach(hook => dispatch(hook))
+    const { hooks, ...raw } = action
+    dispatch(raw)
+    hooks.forEach(hook => dispatch(hook))
+  } else {
+    return next(action)
   }
-
-  return next(action)
 }
 
 export const hook = (action, ...hooks) => {
