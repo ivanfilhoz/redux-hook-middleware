@@ -18,7 +18,9 @@ export const App = connect(
 )(({ clicked, user, loading, clickButton }) => {
   return (
     <>
-      <button onClick={clickButton}>Fetch user</button>
+      <button onClick={clickButton} disabled={loading}>
+        Fetch user
+      </button>
       <hr />
       <pre>{JSON.stringify({ clicked, loading, user }, null, 2)}</pre>
     </>
