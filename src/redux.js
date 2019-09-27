@@ -22,7 +22,7 @@ const fetchUser = dispatch => {
 
 export const clickButton = {
   ...click(),
-  hooks: [fetchUser]
+  hooks: [fetchUser] // That's where the magic happens :)
 }
 
 // Reducer
